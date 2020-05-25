@@ -1,0 +1,9 @@
+{
+  "name": "blog-tutorial-nodevue",
+  "version": "1.0.0",
+  "description": "blog tutorial develop using nodejs, express js, vue js, mysql database",
+  "main": "server.js",
+  "scripts": {},
+  "author": "ahmarul abdi",
+  "license": "ISC"
+}
