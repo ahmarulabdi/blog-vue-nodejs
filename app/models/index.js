@@ -10,3 +10,5 @@ const sequelizeConfig = new Sequelize(dbConfig.db, dbConfig.user, dbConfig.passw
 const db = {}
 db.Sequelize = Sequelize
 db.sequelizeConfig = sequelizeConfig
+
+db.tutorial = require('../models/tutorial.model')(sequelizeConfig, Sequelize)
