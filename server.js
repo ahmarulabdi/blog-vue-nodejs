@@ -15,6 +15,17 @@ app.use(cors(corsOption))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+// registry model
+const db = require('./app/models')
+
+if (process.env.PRODUCTION == 'true') {
+    db.sequelizeConfig.sync()
+} else {
+    db.sequelizeConfig.sync({force: true}).then(() => {
+        console.log('Drop and resync DB')
+    })
+}
+
 app.listen(serverPort, () => {
     console.log('App is running at port = ' + serverPort)
 })

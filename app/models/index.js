@@ -11,3 +11,5 @@ db.Sequelize = Sequelize
 db.sequelizeConfig = sequelizeConfig
 
 db.tutorial = require('./tutorial.model')(sequelizeConfig, Sequelize)
+
+module.exports = db
