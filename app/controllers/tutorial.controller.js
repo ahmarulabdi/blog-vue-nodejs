@@ -4,7 +4,24 @@ const Op = db.sequelizeConfig.Op
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
-
+    // validate if empty
+    if (!req.body.title || !req.body.description) {
+        res.status(400).send({
+            message: "Content cannot be empty!"
+        })
+    } else {
+        Tutorial.create({
+            title: req.body.title,
+            description: req.body.description,
+            published: req.body.published ? req.body.published: false
+        }).then(data => {
+            res.send(data)
+        }).catch(err => {
+            res.status(500).send({
+                mesesage: err.mesesage || "Some error occurred while creating the Tutorial."
+            })
+        })
+    }
 };
 
 // Retrieve all Tutorials from the database.
