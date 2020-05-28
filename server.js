@@ -26,6 +26,8 @@ if (process.env.PRODUCTION == 'true') {
     })
 }
 
+require("./app/routes/tutorial.routes")(app)
+
 app.listen(serverPort, () => {
     console.log('App is running at port = ' + serverPort)
 })
