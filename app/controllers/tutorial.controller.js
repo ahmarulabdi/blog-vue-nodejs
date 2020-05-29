@@ -24,9 +24,19 @@ exports.create = (req, res) => {
     }
 };
 
-// Retrieve all Tutorials from the database.
+// Retrieve all or retrieve with title query param Tutorials from the database.
 exports.findAll = (req, res) => {
+    let title = req.query.title;
+    let condition = title ? {title: {[Op.like]: `%${title}%`}} : null
 
+    Tutorial.findAll({where: condition})
+        .then(data => {
+            res.send(data)
+        }).catch(err => {
+            res.status(500).send({
+                mesesage: err.mesesage || "Some error occurred while creating the Tutorial."
+            })
+    })
 };
 
 // Find a single Tutorial with an id
