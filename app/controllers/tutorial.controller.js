@@ -13,7 +13,7 @@ exports.create = (req, res) => {
         Tutorial.create({
             title: req.body.title,
             description: req.body.description,
-            published: req.body.published ? req.body.published: false
+            published: req.body.published ? req.body.published : false
         }).then(data => {
             res.send(data)
         }).catch(err => {
@@ -33,9 +33,9 @@ exports.findAll = (req, res) => {
         .then(data => {
             res.send(data)
         }).catch(err => {
-            res.status(500).send({
-                mesesage: err.mesesage || "Some error occurred while creating the Tutorial."
-            })
+        res.status(500).send({
+            mesesage: err.mesesage || "Some error occurred while getting all Tutorial."
+        })
     })
 };
 
