@@ -68,7 +68,18 @@ exports.update = (req, res) => {
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
-
+    Tutorial.destroy({
+        where: {id: req.params.id}
+    }).then(data => {
+        res.send({
+            data: data,
+            message: "delete was successfully"
+        })
+    }).catch(err => {
+        res.status(500).send({
+            message: "Some error occurred while deleting the Tutorial"
+        })
+    })
 };
 
 // Delete all Tutorials from the database.
