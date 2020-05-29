@@ -5,7 +5,10 @@ module.exports = app => {
 
     // Create a new Tutorial
     router.get('/', tutorials.findAll)
-    router.post("/", tutorials.create)
+        .post("/", tutorials.create)
+        .get('/:id', tutorials.findOne)
+        .put("/:id", tutorials.update)
+        .delete("/:id", tutorials.delete)
 
     app.use("/api/tutorials", router)
 }
