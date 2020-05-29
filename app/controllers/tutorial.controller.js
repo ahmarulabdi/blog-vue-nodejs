@@ -53,7 +53,17 @@ exports.findOne = (req, res) => {
 
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
-
+    Tutorial.update(req.body, {
+        where: {id: req.params.id}
+    }).then(data => {
+        res.send({
+            message: "update was successfully"
+        })
+    }).catch(err => {
+        res.status(500).send({
+            message: err.mesesage || "Some error occurred while getting the Tutorial."
+        })
+    })
 };
 
 // Delete a Tutorial with the specified id in the request
